@@ -2,7 +2,7 @@ CREATE OR REPLACE PROCEDURE transfer_data(chunkSize INT DEFAULT 10 )
 --    Postgresql data migration between two table in same database
 --    
 --    author: Mert Yavasca
---    created_date: 24.05.2023
+--    create_date: 24.05.2023
 --    last_modify_date: 24.05.2023 / kesilirse kaldıgı yerden devam etmesi icin kontrol eklendi.
 --    
 LANGUAGE plpgsql
@@ -24,7 +24,7 @@ BEGIN
 
     SELECT COUNT(*) INTO totalRows FROM b;
 
-    iterationCount := CEIL((totalRows-destMaxId)::NUMERIC / chunkSize);
+    iterationCount := CEIL((totalRows-destMaxId)::NUMERIC / chunkSize);  -- iterasyon sayisini bulmak icin 
                                
     FOR i IN 0..iterationCount-1 LOOP
         begin
